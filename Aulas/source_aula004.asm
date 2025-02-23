@@ -27,7 +27,10 @@
 ; --- Entradas ---
   #define		botao1		PORTB,RB0		;botão 1 ligado em RB0
 
-  
+
+; --- Saidas ---
+  #define		led1		PORTB,RB7
+
   
 ; --- Vetor de RESET ---
 				org			H'0000'			;Origem no endereço 0000h de memória
@@ -40,3 +43,10 @@
 
 ; --- Programa Principal ---				
 inicio:
+				bank1						;Seleciona o banco 1 de memória
+				movlw		H'7f'			;W = B'01111111
+				movwf		TRISB			;TRISB = H'7F' (apenas o RRB7)
+				bank0
+				
+				
+				end							;Final do programa
